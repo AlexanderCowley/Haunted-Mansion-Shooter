@@ -393,6 +393,7 @@ MonoBehaviour:
   <NextNode>k__BackingField: {fileID: 1210278623}
   ActiveInput: 1
   <MoveSpeed>k__BackingField: 3
+  <RotationSpeed>k__BackingField: 80
 --- !u!135 &1050593741
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -514,6 +515,7 @@ MonoBehaviour:
   <NextNode>k__BackingField: {fileID: 0}
   ActiveInput: 1
   <MoveSpeed>k__BackingField: 0
+  <RotationSpeed>k__BackingField: 0
 --- !u!135 &1210278624
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -592,14 +594,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210278622}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0.99, y: 2.38, z: 10.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &1340466532
 GameObject:
   m_ObjectHideFlags: 0
@@ -755,6 +757,7 @@ MonoBehaviour:
   TargetNode: {fileID: 0}
   InputEnabled: 1
   MoveSpeed: 0
+  RotationSpeed: 0
 --- !u!136 &1447893437
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -926,3 +929,4 @@ MonoBehaviour:
   <NextNode>k__BackingField: {fileID: 1050593740}
   ActiveInput: 1
   <MoveSpeed>k__BackingField: 5
+  <RotationSpeed>k__BackingField: 3

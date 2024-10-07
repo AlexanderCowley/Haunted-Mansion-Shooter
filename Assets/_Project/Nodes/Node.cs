@@ -8,6 +8,7 @@ public class Node : MonoBehaviour
     [SerializeField] bool ActiveInput = true;
 
     [field:SerializeField] public float MoveSpeed {get; private set;}
+    [field:SerializeField] public float RotationSpeed {get; private set;}
     //[SerializeField] float distanceTilTargetReached = 0.25f;
 
     void OnNodeEntered()

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     [SerializeField] Node TargetNode;
     public bool InputEnabled = true;
     [SerializeField] float MoveSpeed;
+    [SerializeField] float RotationSpeed;
 
     void Move()
     {
@@ -17,7 +18,7 @@ public class Player : MonoBehaviour
     void Rotate()
     {
         transform.rotation = Quaternion.RotateTowards(transform.rotation,
-            TargetNode.transform.rotation, MoveSpeed * Time.deltaTime);
+            TargetNode.transform.rotation, RotationSpeed * Time.deltaTime);
     }
 
     //Passing in node entered
@@ -25,15 +26,13 @@ public class Player : MonoBehaviour
     {
         if(CurrentNode == null) return;
         MoveSpeed = CurrentNode.MoveSpeed;
+        RotationSpeed = CurrentNode.RotationSpeed;
         TargetNode = CurrentNode.NextNode;
     }
 
     void Update() 
     {
-        if(TargetNode == null)
-        {
-            return;
-        }
+        if(TargetNode == null) return;
         Move();
         Rotate();
     }
