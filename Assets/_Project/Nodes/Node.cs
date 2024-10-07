@@ -23,7 +23,7 @@ public class Node : MonoBehaviour
     {
         if(other.TryGetComponent<Player>(out Player player))
         {
-            player.SetNode(NextNode);
+            player.SetNode(this);
         }
         OnNodeEntered();
     }
