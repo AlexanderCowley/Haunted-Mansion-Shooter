@@ -1,13 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IShootable
 {
+    [Header("Node Stats")]
     [SerializeField] Node TargetNode;
     public bool InputEnabled = true;
     [SerializeField] float MoveSpeed;
     [SerializeField] float RotationSpeed;
+
+    [Header("Weapons")]
+    [SerializeField] Weapon CurrentWeapon;
+
+    [Header("Health")]
+    int _currentHealth;
+    [SerializeField] int MaxHealth = 10;
+
+    void Awake() 
+    {
+        _currentHealth = MaxHealth;
+    }
 
     void Move()
     {
@@ -28,12 +39,26 @@ public class Player : MonoBehaviour
         MoveSpeed = CurrentNode.MoveSpeed;
         RotationSpeed = CurrentNode.RotationSpeed;
         TargetNode = CurrentNode.NextNode;
+        InputEnabled = CurrentNode.ActiveInput;
+    }
+
+    public void TakeDamage(int damageTaken)
+    {
+        _currentHealth -= damageTaken;
     }
 
     void Update() 
     {
+        //Target nodes should not be null
+        //If they do it should be the end of the stage
         if(TargetNode == null) return;
         Move();
         Rotate();
+        if(!InputEnabled) return;
+        if(Input.GetMouseButtonDown(0))
+        {
+            CurrentWeapon.Fire();
+        }
     }
+
 }
