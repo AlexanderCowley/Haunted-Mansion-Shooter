@@ -7,6 +7,9 @@ public class Weapon : MonoBehaviour
     [SerializeField] WeaponData Data;
     Transform _firePoint;
 
+    public delegate void OnFireEvent();
+    public event OnFireEvent FireEventHandler;
+
     void Awake() 
     {
         _firePoint = transform.GetChild(0).GetComponent<Transform>();
@@ -17,8 +20,9 @@ public class Weapon : MonoBehaviour
     {
         //Ammo decremented
         if(Data.CurrentAmmo > 0) Data.CurrentAmmo--;
-        //OnFireEvent
-        if(Physics.Raycast(Input.mousePosition, _firePoint.forward, out RaycastHit hit))
+        FireEventHandler?.Invoke();
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if(Physics.Raycast(ray, out RaycastHit hit))
         {
             if(hit.transform.TryGetComponent<IShootable>(out IShootable shootable))
             {
