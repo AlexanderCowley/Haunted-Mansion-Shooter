@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IShootable
+public class EnemyHealth : MonoBehaviour, IShootable
 {
     [SerializeField] int CurrentHealth;
     [SerializeField] int MaxHealth = 3;
