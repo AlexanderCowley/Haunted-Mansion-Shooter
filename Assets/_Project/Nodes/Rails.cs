@@ -14,4 +14,11 @@ public class Rails : MonoBehaviour
         _Player.SetNode(StartingNode);
     }
     
+    //For unity editor stuff
+    #if UNITY_EDITOR
+    void OnDrawGizmos() 
+    {
+        //
+    }
+    #endif
 }
