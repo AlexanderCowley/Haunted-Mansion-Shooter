@@ -15,8 +15,12 @@ public class Player : MonoBehaviour, IShootable
     int _currentHealth;
     [SerializeField] int MaxHealth = 10;
 
+    [Header("Cursor")]
+    [SerializeField] Texture2D CursorTexture;
+
     void Awake() 
     {
+        Cursor.SetCursor(CursorTexture, new Vector2(64,64), CursorMode.ForceSoftware);
         _currentHealth = MaxHealth;
     }
 

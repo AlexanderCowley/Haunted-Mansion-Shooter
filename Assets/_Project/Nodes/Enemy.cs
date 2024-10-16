@@ -2,17 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour, IShootable
+public class Enemy : MonoBehaviour
 {
-    [SerializeField] int CurrentHealth;
-    [SerializeField] int MaxHealth = 3;
+    [SerializeField] EnemyNode TargetNode;
+    [SerializeField] float MoveSpeed;
+    [SerializeField] float RotationSpeed;
+
     void Awake() 
     {
-        CurrentHealth = MaxHealth;
+        if(TargetNode == null) return;
+        transform.position = TargetNode.transform.position;
+        transform.rotation = TargetNode.transform.rotation;
+        SetNode(TargetNode);
+    }
+    //Passing in node entered
+    public void SetNode(EnemyNode CurrentNode)
+    {
+        if(CurrentNode == null) return;
+        MoveSpeed = CurrentNode.MoveSpeed;
+        RotationSpeed = CurrentNode.RotationSpeed;
+        TargetNode = CurrentNode.NextNode;
     }
 
-    public void TakeDamage(int damageTaken)
+    void Move()
     {
-        CurrentHealth -= damageTaken;
+        transform.position = Vector3.MoveTowards(transform.position, 
+            TargetNode.transform.position, MoveSpeed * Time.deltaTime);
+    }
+
+    void Rotate()
+    {
+        transform.rotation = Quaternion.RotateTowards(transform.rotation,
+            TargetNode.transform.rotation, RotationSpeed * Time.deltaTime);
+    }
+
+    void Update() 
+    {
+        if(TargetNode == null) return;
+        Move();
+        Rotate();
     }
 }
