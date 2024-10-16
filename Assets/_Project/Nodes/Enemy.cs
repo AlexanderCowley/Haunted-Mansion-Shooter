@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     {
         if(TargetNode == null) return;
         transform.position = TargetNode.transform.position;
+        transform.rotation = TargetNode.transform.rotation;
         SetNode(TargetNode);
     }
     //Passing in node entered
