@@ -8,6 +8,8 @@ public class EnemyNode : MonoBehaviour
 
     [field:SerializeField] public float MoveSpeed {get; private set;}
     [field:SerializeField] public float RotationSpeed {get; private set;}
+    [SerializeField] string AnimStateName;
+    [SerializeField] AnimationClip AnimClip;
 
     public delegate void OnNodeEntered();
     public event OnNodeEntered NodeEnteredHandler;
@@ -17,7 +19,8 @@ public class EnemyNode : MonoBehaviour
         if(other.TryGetComponent<Enemy>(out Enemy enemy))
         {
             enemy.SetNode(this);
+            enemy.PlayAnimation(AnimStateName);
         }
-        NodeEnteredHandler?.Invoke();
+        //NodeEnteredHandler?.Invoke();
     }
 }

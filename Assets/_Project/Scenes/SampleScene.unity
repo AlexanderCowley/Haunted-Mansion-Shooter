@@ -355,6 +355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 300354843}
   - component: {fileID: 300354844}
+  - component: {fileID: 300354845}
   m_Layer: 0
   m_Name: SkeletonTestPath (1)
   m_TagString: Untagged
@@ -392,6 +393,29 @@ MonoBehaviour:
   <NextNode>k__BackingField: {fileID: 0}
   <MoveSpeed>k__BackingField: 3
   <RotationSpeed>k__BackingField: 3
+  AnimStateName: Idle
+  AnimClip: {fileID: 4377859179230231196, guid: e5901ce40e7bc6f45be465c564aa05e0, type: 3}
+--- !u!135 &300354845
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 300354842}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &665671685
 GameObject:
   m_ObjectHideFlags: 0
@@ -402,6 +426,7 @@ GameObject:
   m_Component:
   - component: {fileID: 665671686}
   - component: {fileID: 665671687}
+  - component: {fileID: 665671688}
   m_Layer: 0
   m_Name: SkeletonTestPath
   m_TagString: Untagged
@@ -440,6 +465,29 @@ MonoBehaviour:
   <NextNode>k__BackingField: {fileID: 300354844}
   <MoveSpeed>k__BackingField: 3
   <RotationSpeed>k__BackingField: 60
+  AnimStateName: Move
+  AnimClip: {fileID: 2075726249656104597, guid: e5901ce40e7bc6f45be465c564aa05e0, type: 3}
+--- !u!135 &665671688
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 665671685}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &684972268
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,6 +1274,8 @@ MonoBehaviour:
   <NextNode>k__BackingField: {fileID: 0}
   <MoveSpeed>k__BackingField: 5
   <RotationSpeed>k__BackingField: 2
+  AnimStateName: 
+  AnimClip: {fileID: 0}
 --- !u!1001 &1231755347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1260,7 +1310,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2506256628442055236, guid: f34f09e70e02cc94683d8dbaaf079f2e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.4963088
+      value: 7.66
       objectReference: {fileID: 0}
     - target: {fileID: 2506256628442055236, guid: f34f09e70e02cc94683d8dbaaf079f2e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1725,6 +1775,8 @@ MonoBehaviour:
   <NextNode>k__BackingField: {fileID: 1228491639}
   <MoveSpeed>k__BackingField: 6
   <RotationSpeed>k__BackingField: 30
+  AnimStateName: 
+  AnimClip: {fileID: 0}
 --- !u!1 &1765996644
 GameObject:
   m_ObjectHideFlags: 0
@@ -2098,18 +2150,6 @@ PrefabInstance:
       propertyPath: TargetNode
       value: 
       objectReference: {fileID: 665671687}
-    - target: {fileID: 1225739061938318345, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1225739061938318345, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1225739061938318345, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4419266183809686919, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -2154,14 +2194,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5197875181397458306, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
-      propertyPath: m_Height
-      value: 3.2215497
-      objectReference: {fileID: 0}
-    - target: {fileID: 5197875181397458306, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
-      propertyPath: m_Center.y
-      value: 1.4138652
-      objectReference: {fileID: 0}
+    - target: {fileID: 5666399752442060592, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 41f081d5c6d286c47a33bed3f84de79a, type: 3}
+    - target: {fileID: 5666399752442060592, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c6471e126cb9824439a3d2d7e2cac540, type: 2}
     - target: {fileID: 6363893729101671590, guid: defd0dcce6234ec4ca2c510449092bbf, type: 3}
       propertyPath: m_Name
       value: Skeleton

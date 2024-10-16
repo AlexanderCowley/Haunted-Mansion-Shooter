@@ -7,9 +7,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] EnemyNode TargetNode;
     [SerializeField] float MoveSpeed;
     [SerializeField] float RotationSpeed;
+    Animator _animator;
 
     void Awake() 
     {
+        _animator = GetComponent<Animator>();
         if(TargetNode == null) return;
         transform.position = TargetNode.transform.position;
         transform.rotation = TargetNode.transform.rotation;
@@ -34,6 +36,14 @@ public class Enemy : MonoBehaviour
     {
         transform.rotation = Quaternion.RotateTowards(transform.rotation,
             TargetNode.transform.rotation, RotationSpeed * Time.deltaTime);
+    }
+
+    public void PlayAnimation(string clip)
+    {
+        _animator.Play(clip, -1, 0f);
+        Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).length > 
+        _animator.GetCurrentAnimatorStateInfo(0).normalizedTime
+        && _animator.GetCurrentAnimatorStateInfo(0).IsName(clip));
     }
 
     void Update() 
