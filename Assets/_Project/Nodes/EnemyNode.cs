@@ -9,7 +9,6 @@ public class EnemyNode : MonoBehaviour
     [field:SerializeField] public float MoveSpeed {get; private set;}
     [field:SerializeField] public float RotationSpeed {get; private set;}
     [SerializeField] string AnimStateName;
-    [SerializeField] AnimationClip AnimClip;
 
     public delegate void OnNodeEntered();
     public event OnNodeEntered NodeEnteredHandler;

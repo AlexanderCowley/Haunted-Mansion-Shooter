@@ -41,9 +41,6 @@ public class Enemy : MonoBehaviour
     public void PlayAnimation(string clip)
     {
         _animator.Play(clip, -1, 0f);
-        Debug.Log(_animator.GetCurrentAnimatorStateInfo(0).length > 
-        _animator.GetCurrentAnimatorStateInfo(0).normalizedTime
-        && _animator.GetCurrentAnimatorStateInfo(0).IsName(clip));
     }
 
     void Update() 
