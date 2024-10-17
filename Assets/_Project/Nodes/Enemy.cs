@@ -7,7 +7,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] EnemyNode TargetNode;
     [SerializeField] float MoveSpeed;
     [SerializeField] float RotationSpeed;
+    [SerializeField] int Damage;
     Animator _animator;
+    bool _isAttacking = false;
 
     void Awake() 
     {
@@ -41,12 +43,30 @@ public class Enemy : MonoBehaviour
     public void PlayAnimation(string clip)
     {
         _animator.Play(clip, -1, 0f);
+        if(clip == "Attack")
+        {
+            _isAttacking = true;
+        }
+    }
+
+    bool IsAnimPlaying(string clip)
+    {
+    return _animator.GetCurrentAnimatorStateInfo(0).length > 
+        _animator.GetCurrentAnimatorStateInfo(0).normalizedTime
+        && _animator.GetCurrentAnimatorStateInfo(0).IsName(clip);
     }
 
     void Update() 
     {
+        if(_isAttacking && 
+            _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+        {
+            Rails.player.TakeDamage(Damage);
+            _isAttacking = false;
+        }
         if(TargetNode == null) return;
         Move();
         Rotate();
+        
     }
 }

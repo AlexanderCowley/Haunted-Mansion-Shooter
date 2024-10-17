@@ -13,7 +13,7 @@ public class Player : MonoBehaviour, IShootable
 
     [Header("Health")]
     int _currentHealth;
-    [SerializeField] int MaxHealth = 10;
+    [SerializeField] int MaxHealth;
 
     [Header("Cursor")]
     [SerializeField] Texture2D CursorTexture;

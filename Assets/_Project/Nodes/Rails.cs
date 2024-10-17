@@ -1,7 +1,7 @@
 using UnityEngine;
 public class Rails : MonoBehaviour
 {
-    [SerializeField] Player _Player;
+    public static Player player;
     //Target Node
     //Current Node
     [SerializeField] Node[] Nodes;
@@ -9,9 +9,10 @@ public class Rails : MonoBehaviour
 
     void Awake() 
     {
+        player = FindAnyObjectByType<Player>();
         StartingNode = Nodes[0];
-        _Player.transform.position = StartingNode.transform.position;
-        _Player.SetNode(StartingNode);
+        player.transform.position = StartingNode.transform.position;
+        player.SetNode(StartingNode);
     }
     
     //For unity editor stuff

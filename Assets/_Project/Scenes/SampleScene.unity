@@ -416,6 +416,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 5
   <RotationSpeed>k__BackingField: 60
   AnimStateName: Move
+  <IsAttack>k__BackingField: 0
 --- !u!1 &300354842
 GameObject:
   m_ObjectHideFlags: 0
@@ -465,6 +466,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 3
   <RotationSpeed>k__BackingField: 3
   AnimStateName: Idle
+  <IsAttack>k__BackingField: 0
 --- !u!135 &300354845
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -536,6 +538,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 3
   <RotationSpeed>k__BackingField: 60
   AnimStateName: Move
+  <IsAttack>k__BackingField: 0
 --- !u!135 &665671688
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1344,6 +1347,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 5
   <RotationSpeed>k__BackingField: 2
   AnimStateName: 
+  <IsAttack>k__BackingField: 0
 --- !u!1001 &1231755347
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1844,6 +1848,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 6
   <RotationSpeed>k__BackingField: 30
   AnimStateName: 
+  <IsAttack>k__BackingField: 0
 --- !u!1 &1765996644
 GameObject:
   m_ObjectHideFlags: 0
@@ -2163,7 +2168,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968250235}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 7.88}
+  m_LocalPosition: {x: -7.28, y: 0, z: 16.51}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2207,6 +2212,7 @@ MonoBehaviour:
   <MoveSpeed>k__BackingField: 0
   <RotationSpeed>k__BackingField: 0
   AnimStateName: Attack
+  <IsAttack>k__BackingField: 1
 --- !u!1 &2025196534
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class EnemyNode : MonoBehaviour
     [field:SerializeField] public float MoveSpeed {get; private set;}
     [field:SerializeField] public float RotationSpeed {get; private set;}
     [SerializeField] string AnimStateName;
+    [field:SerializeField] public bool IsAttack {get; private set;} = false;
 
     public delegate void OnNodeEntered();
     public event OnNodeEntered NodeEnteredHandler;
