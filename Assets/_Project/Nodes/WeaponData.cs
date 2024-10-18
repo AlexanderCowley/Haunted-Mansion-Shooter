@@ -11,6 +11,7 @@ public class WeaponData : ScriptableObject
     [field:SerializeField] public int CurrentAmmo {get; set;}
     [field:SerializeField] public int MaxAmmo  {get; private set;}
     [field:SerializeField] public float FireRate {get; private set;}
+    [field:SerializeField] public float ReloadSpeed {get; private set;}
 
     void OnEnable() 
     {

@@ -11,12 +11,14 @@ public class Weapon : MonoBehaviour
     public event OnFireEvent FireEventHandler;
 
     WaitForSeconds _fireRateDelay;
+    WaitForSeconds _reloadDelay;
 
     bool _canFire = true;
 
     void Awake() 
     {
         _fireRateDelay = new WaitForSeconds(Data.FireRate);
+        _reloadDelay = new WaitForSeconds(Data.ReloadSpeed);
         _firePoint = transform.GetChild(0).GetComponent<Transform>();
         Data.CurrentAmmo = Data.MaxAmmo;
     }
@@ -24,9 +26,17 @@ public class Weapon : MonoBehaviour
     public void Fire()
     {
         if(!_canFire) return;
-        Debug.Log("Fire");
         //Ammo decremented
-        if(Data.CurrentAmmo > 0) Data.CurrentAmmo--;
+        if(Data.CurrentAmmo > 0) 
+        {
+            Data.CurrentAmmo--;
+        }
+        else
+        {
+            _canFire = false;
+            StartCoroutine(ReloadDelay());
+            return;
+        }
         FireEventHandler?.Invoke();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out RaycastHit hit))
@@ -37,12 +47,19 @@ public class Weapon : MonoBehaviour
             }
         }
         _canFire = false;
-        StartCoroutine(FireRateDelay());
+        StartCoroutine(Delay(_fireRateDelay));
     }
 
-    IEnumerator FireRateDelay()
+    IEnumerator ReloadDelay()
     {
-        yield return _fireRateDelay;
+        yield return _reloadDelay;
+        Data.CurrentAmmo = Data.MaxAmmo;
+        _canFire = true;
+    }
+
+    IEnumerator Delay(WaitForSeconds delay)
+    {;
+        yield return delay;
         _canFire = true;
     }
 }
