@@ -49,6 +49,11 @@ public class Player : MonoBehaviour, IShootable
     public void TakeDamage(int damageTaken)
     {
         _currentHealth -= damageTaken;
+
+        if(_currentHealth <= 0)
+        {
+            //OnGameOver Event
+        }
     }
 
     void Update() 
