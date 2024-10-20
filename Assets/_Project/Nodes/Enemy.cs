@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
     void Update() 
     {
         if(_isAttacking && 
-            _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.5f)
+            _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f)
         {
             Rails.player.TakeDamage(Damage);
             _isAttacking = false;

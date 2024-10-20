@@ -20,6 +20,7 @@ public class Player : MonoBehaviour, IShootable
 
     void Awake() 
     {
+        Time.timeScale = 1f;
         Cursor.SetCursor(CursorTexture, new Vector2(64,64), CursorMode.ForceSoftware);
         _currentHealth = MaxHealth;
     }
@@ -52,7 +53,8 @@ public class Player : MonoBehaviour, IShootable
 
         if(_currentHealth <= 0)
         {
-            //OnGameOver Event
+            Rails.GameOverCanvas.gameObject.SetActive(true);
+            Time.timeScale = 0f;
         }
     }
 

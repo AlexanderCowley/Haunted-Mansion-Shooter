@@ -18,6 +18,6 @@ public class EnemyHealth : MonoBehaviour, IShootable
     void Death()
     {
         //Replace with object pooling later
-        Destroy(this.gameObject, 0.3f);
+        gameObject.SetActive(false);
     }
 }
