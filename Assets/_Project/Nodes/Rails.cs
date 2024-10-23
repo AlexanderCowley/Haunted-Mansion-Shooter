@@ -7,7 +7,7 @@ public class Rails : MonoBehaviour
     //Current Node
     [SerializeField] Node[] Nodes;
     Node StartingNode;
-    public static Canvas GameOverCanvas;
+    [SerializeField] public Canvas GameOverCanvas;
 
     void Awake() 
     {
@@ -16,8 +16,11 @@ public class Rails : MonoBehaviour
         StartingNode = Nodes[0];
         player.transform.position = StartingNode.transform.position;
         player.SetNode(StartingNode);
+    }
 
-        GameOverCanvas = transform.GetChild(0).GetComponent<Canvas>();
+    void Start()
+    {
+        GameOverCanvas.gameObject.SetActive(false);
     }
 
     public void OnClickRetry()

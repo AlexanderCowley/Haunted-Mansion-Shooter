@@ -16,7 +16,9 @@ public class AudioManager : MonoBehaviour
         else if(Instance != this)
         {
             Destroy(this);
+            return;
         }
+        //DontDestroyOnLoad(this);
     }
 
     public void PlayBG()

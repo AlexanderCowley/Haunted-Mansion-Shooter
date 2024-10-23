@@ -21,8 +21,11 @@ public class Player : MonoBehaviour, IShootable
     [Header("Audio")]
     [SerializeField] AudioSource _audioSource;
 
+    Rails _manager;
+
     void Awake() 
     {
+        _manager = FindAnyObjectByType<Rails>();
         Time.timeScale = 1f;
         Cursor.SetCursor(CursorTexture, new Vector2(64,64), CursorMode.ForceSoftware);
         _currentHealth = MaxHealth;
@@ -58,7 +61,7 @@ public class Player : MonoBehaviour, IShootable
 
         if(_currentHealth <= 0)
         {
-            Rails.GameOverCanvas.gameObject.SetActive(true);
+            _manager.GameOverCanvas.gameObject.SetActive(true);
             Time.timeScale = 0f;
         }
     }
