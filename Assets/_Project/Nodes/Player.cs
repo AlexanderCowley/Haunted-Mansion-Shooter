@@ -18,11 +18,16 @@ public class Player : MonoBehaviour, IShootable
     [Header("Cursor")]
     [SerializeField] Texture2D CursorTexture;
 
+    [Header("Audio")]
+    [SerializeField] AudioSource _audioSource;
+
     void Awake() 
     {
         Time.timeScale = 1f;
         Cursor.SetCursor(CursorTexture, new Vector2(64,64), CursorMode.ForceSoftware);
         _currentHealth = MaxHealth;
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.Play();
     }
 
     void Move()
@@ -62,7 +67,11 @@ public class Player : MonoBehaviour, IShootable
     {
         //Target nodes should not be null
         //If they do it should be the end of the stage
-        if(TargetNode == null) return;
+        if(TargetNode == null) 
+        {
+            _audioSource.Stop(); 
+            return;
+        }
         Move();
         Rotate();
         if(!InputEnabled) return;

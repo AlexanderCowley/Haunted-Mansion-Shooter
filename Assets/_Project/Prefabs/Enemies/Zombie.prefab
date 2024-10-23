@@ -35,7 +35,7 @@ Transform:
   m_Children:
   - {fileID: 3617719532668200079}
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6363770864639743525
 MonoBehaviour:
@@ -52,6 +52,7 @@ MonoBehaviour:
   TargetNode: {fileID: 0}
   MoveSpeed: 0
   RotationSpeed: 0
+  Damage: 1
 --- !u!114 &3675679092086367249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -126,7 +127,7 @@ Animator:
   m_GameObject: {fileID: 7459584905397639890}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: 8c53cffd52097cf4582f0a090c9a833e, type: 3}
-  m_Controller: {fileID: 9100000, guid: c6471e126cb9824439a3d2d7e2cac540, type: 2}
+  m_Controller: {fileID: 9100000, guid: 161cb9ea828d6d648ae9107805d36c03, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

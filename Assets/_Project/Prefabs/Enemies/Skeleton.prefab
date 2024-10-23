@@ -20,7 +20,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4419266183809686919
 Transform:
   m_ObjectHideFlags: 0
@@ -52,6 +52,7 @@ MonoBehaviour:
   TargetNode: {fileID: 0}
   MoveSpeed: 0
   RotationSpeed: 0
+  Damage: 0
 --- !u!114 &1094881754962314339
 MonoBehaviour:
   m_ObjectHideFlags: 0

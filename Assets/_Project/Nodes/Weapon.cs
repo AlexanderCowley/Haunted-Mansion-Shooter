@@ -12,13 +12,15 @@ public class Weapon : MonoBehaviour
 
     WaitForSeconds _fireRateDelay;
     WaitForSeconds _reloadDelay;
-
     bool _canFire = true;
+
+    AudioSource _audioSource;
 
     void Awake() 
     {
         _fireRateDelay = new WaitForSeconds(Data.FireRate);
         _reloadDelay = new WaitForSeconds(Data.ReloadSpeed);
+        _audioSource = GetComponent<AudioSource>();
         _firePoint = transform.GetChild(0).GetComponent<Transform>();
         Data.CurrentAmmo = Data.MaxAmmo;
     }
@@ -37,7 +39,8 @@ public class Weapon : MonoBehaviour
             StartCoroutine(ReloadDelay());
             return;
         }
-        FireEventHandler?.Invoke();
+        //FireEventHandler?.Invoke();
+        _audioSource.Play();
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if(Physics.Raycast(ray, out RaycastHit hit))
         {
