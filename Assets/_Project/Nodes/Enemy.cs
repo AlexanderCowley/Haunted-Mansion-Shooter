@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
 
     Rails Manager;
 
-    void Awake() 
+    void OnEnable() 
     {
         Manager = FindAnyObjectByType<Rails>();
         _animator = GetComponent<Animator>();

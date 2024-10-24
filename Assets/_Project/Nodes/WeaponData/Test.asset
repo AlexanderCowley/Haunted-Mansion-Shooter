@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bf3d08956087a242ad38f6c9d9e7e52, type: 3}
   m_Name: Test
   m_EditorClassIdentifier: 
-  <Damage>k__BackingField: 3
-  <CurrentAmmo>k__BackingField: 3
+  <Damage>k__BackingField: 2
+  <CurrentAmmo>k__BackingField: 5
   <MaxAmmo>k__BackingField: 6
   <FireRate>k__BackingField: 0.24
   <ReloadSpeed>k__BackingField: 1.2

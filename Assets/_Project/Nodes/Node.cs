@@ -11,14 +11,8 @@ public class Node : MonoBehaviour
     [field:SerializeField] public float RotationSpeed {get; private set;}
     //[SerializeField] float distanceTilTargetReached = 0.25f;
 
-    void OnNodeEntered()
-    {
-        if(!ActiveInput)
-        {
-            //Deactivate input
-        }
-        else{/*activate input*/}
-    }
+    public delegate void OnNodeEntered();
+    public event OnNodeEntered NodeEnteredHandler;
 
     void OnTriggerEnter(Collider other) 
     {
@@ -26,6 +20,6 @@ public class Node : MonoBehaviour
         {
             player.SetNode(this);
         }
-        OnNodeEntered();
+        NodeEnteredHandler?.Invoke();
     }
 }
