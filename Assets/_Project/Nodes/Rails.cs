@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class Rails : MonoBehaviour
 {
-    public static Player player;
+    public Player player;
     //Target Node
     //Current Node
     [SerializeField] Node[] Nodes;

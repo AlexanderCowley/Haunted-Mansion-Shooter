@@ -9,11 +9,16 @@ public class Enemy : MonoBehaviour
     [SerializeField] float RotationSpeed;
     [SerializeField] int Damage;
     Animator _animator;
+    AudioSource _audioSource;
     bool _isAttacking = false;
+
+    Rails Manager;
 
     void Awake() 
     {
+        Manager = FindAnyObjectByType<Rails>();
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>();
         if(TargetNode == null) return;
         transform.position = TargetNode.transform.position;
         transform.rotation = TargetNode.transform.rotation;
@@ -46,6 +51,7 @@ public class Enemy : MonoBehaviour
         if(clip == "Attack")
         {
             _isAttacking = true;
+            _audioSource.Play();
         }
     }
 
@@ -61,7 +67,7 @@ public class Enemy : MonoBehaviour
         if(_isAttacking && 
             _animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.6f)
         {
-            Rails.player.TakeDamage(Damage);
+            Manager.player.TakeDamage(Damage);
             _isAttacking = false;
         }
         if(TargetNode == null) return;

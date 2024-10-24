@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class Player : MonoBehaviour, IShootable
@@ -10,9 +11,7 @@ public class Player : MonoBehaviour, IShootable
 
     [Header("Weapons")]
     [SerializeField] Weapon CurrentWeapon;
-
-    [Header("Health")]
-    int _currentHealth;
+    public int CurrentHealth {get; private set;}
     [SerializeField] int MaxHealth;
 
     [Header("Cursor")]
@@ -23,12 +22,16 @@ public class Player : MonoBehaviour, IShootable
 
     Rails _manager;
 
+    public delegate void OnDamageTaken();
+    public event OnDamageTaken DamageTakenHandler;
+    public event OnDamageTaken WeaponFiredHandler;
+
     void Awake() 
     {
         _manager = FindAnyObjectByType<Rails>();
         Time.timeScale = 1f;
         Cursor.SetCursor(CursorTexture, new Vector2(64,64), CursorMode.ForceSoftware);
-        _currentHealth = MaxHealth;
+        CurrentHealth = MaxHealth;
         _audioSource = GetComponent<AudioSource>();
         _audioSource.Play();
     }
@@ -57,9 +60,9 @@ public class Player : MonoBehaviour, IShootable
 
     public void TakeDamage(int damageTaken)
     {
-        _currentHealth -= damageTaken;
-
-        if(_currentHealth <= 0)
+        CurrentHealth -= damageTaken;
+        DamageTakenHandler?.Invoke();
+        if(CurrentHealth <= 0)
         {
             _manager.GameOverCanvas.gameObject.SetActive(true);
             Time.timeScale = 0f;
@@ -81,6 +84,7 @@ public class Player : MonoBehaviour, IShootable
         if(Input.GetMouseButtonDown(0))
         {
             CurrentWeapon.Fire();
+            WeaponFiredHandler?.Invoke();
         }
     }
 
