@@ -11,9 +11,6 @@ public class EnemyNode : MonoBehaviour
     [SerializeField] string AnimStateName;
     [field:SerializeField] public bool IsAttack {get; private set;} = false;
 
-    public delegate void OnNodeEntered();
-    public event OnNodeEntered NodeEnteredHandler;
-
     void OnTriggerEnter(Collider other) 
     {
         if(other.TryGetComponent<Enemy>(out Enemy enemy))

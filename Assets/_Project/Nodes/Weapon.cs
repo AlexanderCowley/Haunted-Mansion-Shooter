@@ -1,21 +1,13 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
     [SerializeField] WeaponData Data;
-    Transform _firePoint;
-
-    public delegate void OnFireEvent();
-    public event OnFireEvent FireEventHandler;
 
     WaitForSeconds _fireRateDelay;
     WaitForSeconds _reloadDelay;
     bool _canFire = true;
-    bool _hasFired = false;
     AudioSource _audioSource;
 
     LayerMask _layerMask;
@@ -26,7 +18,6 @@ public class Weapon : MonoBehaviour
         _fireRateDelay = new WaitForSeconds(Data.FireRate);
         _reloadDelay = new WaitForSeconds(Data.ReloadSpeed);
         _audioSource = GetComponent<AudioSource>();
-        _firePoint = transform.GetChild(0).GetComponent<Transform>();
         Data.CurrentAmmo = Data.MaxAmmo;
         _layerMask = LayerMask.GetMask("Shootable");
     }
