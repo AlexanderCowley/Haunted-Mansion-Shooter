@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class Weapon : MonoBehaviour
@@ -13,9 +15,12 @@ public class Weapon : MonoBehaviour
     WaitForSeconds _fireRateDelay;
     WaitForSeconds _reloadDelay;
     bool _canFire = true;
-
+    bool _hasFired = false;
     AudioSource _audioSource;
 
+    LayerMask _layerMask;
+
+    Ray _ray;
     void Awake() 
     {
         _fireRateDelay = new WaitForSeconds(Data.FireRate);
@@ -23,6 +28,7 @@ public class Weapon : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
         _firePoint = transform.GetChild(0).GetComponent<Transform>();
         Data.CurrentAmmo = Data.MaxAmmo;
+        _layerMask = LayerMask.GetMask("Shootable");
     }
 
     public void Fire()
@@ -41,8 +47,11 @@ public class Weapon : MonoBehaviour
         }
         //FireEventHandler?.Invoke();
         _audioSource.Play();
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray, out RaycastHit hit))
+        _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if(Physics.SphereCast(
+            _ray.origin, 5f, _ray.direction, 
+            out RaycastHit hit, Mathf.Infinity, _layerMask))
         {
             if(hit.transform.TryGetComponent<IShootable>(out IShootable shootable))
             {
@@ -61,7 +70,7 @@ public class Weapon : MonoBehaviour
     }
 
     IEnumerator Delay(WaitForSeconds delay)
-    {;
+    {
         yield return delay;
         _canFire = true;
     }
