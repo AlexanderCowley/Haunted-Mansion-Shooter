@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class EnemyNode : MonoBehaviour
 {
@@ -20,4 +21,17 @@ public class EnemyNode : MonoBehaviour
         }
         //NodeEnteredHandler?.Invoke();
     }
+
+    #if UNITY_EDITOR
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, 0.8f);
+        if(NextNode != null)
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawLine(transform.position, NextNode.transform.position);
+        }
+    }
+    #endif
 }
