@@ -16,7 +16,7 @@ public class AmmoUI : MonoBehaviour
 
     private void OnEnable()
     {
-        Manager.player.WeaponFiredHandler += UpdateText;
+        Manager.player.CurrentWeapon.OnFireEventHandler += UpdateText;
         UpdateText();
     }
 

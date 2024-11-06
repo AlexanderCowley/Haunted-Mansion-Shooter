@@ -10,7 +10,7 @@ public class Player : MonoBehaviour, IShootable
     [SerializeField] float RotationSpeed;
 
     [Header("Weapons")]
-    [SerializeField] Weapon CurrentWeapon;
+    public Weapon CurrentWeapon;
     public int CurrentHealth {get; private set;}
     [SerializeField] int MaxHealth;
 

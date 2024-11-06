@@ -13,6 +13,9 @@ public class Weapon : MonoBehaviour
     LayerMask _layerMask;
 
     Ray _ray;
+
+    public delegate void OnFireEvent();
+    public event OnFireEvent OnFireEventHandler;
     void Awake() 
     {
         _fireRateDelay = new WaitForSeconds(Data.FireRate);
@@ -36,7 +39,7 @@ public class Weapon : MonoBehaviour
             StartCoroutine(ReloadDelay());
             return;
         }
-        //FireEventHandler?.Invoke();
+        OnFireEventHandler?.Invoke();
         _audioSource.Play();
         _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -58,6 +61,7 @@ public class Weapon : MonoBehaviour
         yield return _reloadDelay;
         Data.CurrentAmmo = Data.MaxAmmo;
         _canFire = true;
+        OnFireEventHandler?.Invoke();
     }
 
     IEnumerator Delay(WaitForSeconds delay)
