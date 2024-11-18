@@ -20,12 +20,18 @@ public class WeaponTracker : MonoBehaviour
 
     void Update() 
     {
-        turn.x += Input.GetAxisRaw("Mouse X") * RotSpeed * Time.deltaTime;
-        turn.y += Input.GetAxisRaw("Mouse Y") * RotSpeed * Time.deltaTime;
-
+        //Might need to reset input after 
+        turn.x += Input.GetAxis("Mouse X") * 
+            RotSpeed * Time.deltaTime + OffSetX;
+        turn.y += Input.GetAxis("Mouse Y") * 
+            RotSpeed * Time.deltaTime + OffSetY;
+        
+        //Limits the turn values
+        turn.x = Mathf.Clamp(turn.x, -35, 35);
+        turn.y = Mathf.Clamp(turn.y, -35, 35);
         Quaternion target = Quaternion.Euler(
-            Mathf.Clamp(-turn.y + OffSetY, 0f, 35f), 
-            Mathf.Clamp(turn.x + OffSetX, 0f, 35f), 0);
+            -turn.y, turn.x, 0);
         transform.localRotation = target;
+        
     }
 }

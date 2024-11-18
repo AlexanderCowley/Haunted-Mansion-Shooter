@@ -1851,8 +1851,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RotSpeed: 30
-  OffSetX: 10
-  OffSetY: 0
+  OffSetX: 0
 --- !u!1001 &703686823
 PrefabInstance:
   m_ObjectHideFlags: 0
